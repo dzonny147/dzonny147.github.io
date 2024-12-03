@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Vyhledávání</title>
+</head>
+<body>
+    <form id="textForm">
+        <label for="inputText">Zadejte frázi:</label>
+        <input type="text" id="inputText" name="inputText" required>
+        <button type="submit">Vyhledat</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('textForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const inputText = document.getElementById('inputText').value;
+
+            const response = await fetch('/api/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ inputText })
+            });
+
+            if (response.ok) {
+                const { downloadLink } = await response.json();
+                document.getElementById('result').innerHTML = "";
+                document.getElementById('result').innerHTML = `
+                    <a href="${downloadLink}" download="result.csv">Stáhnout výsledky jako CSV</a>
+                `;
+            } else {
+                document.getElementById('result').innerHTML = 'Chyba při vyhledávání!';
+            }
+        });
+    </script>
+</body>
+</html>
