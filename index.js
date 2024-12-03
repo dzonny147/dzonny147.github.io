@@ -16,7 +16,7 @@ const PORT = 10000;
 app.use(bodyParser.json());
 
 // Endpoint pro zpracování textu a generování CSV
-app.post('https://dzonny147-github-io.onrender.com', async (req, res) => {
+app.post('/api/search', async (req, res) => {
     const { inputText } = req.body;
 
     //error message
@@ -44,6 +44,7 @@ app.post('https://dzonny147-github-io.onrender.com', async (req, res) => {
         // extraction of results of google search
         const searchResults = await page.$$('.tF2Cxc');
         
+        let results = [];
 
         for (const result of searchResults) {
             //extraction of information
