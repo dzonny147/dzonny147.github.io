@@ -11,9 +11,10 @@ const path = require('path');
 const puppeteer = require('puppeteer');
 const cors = require('cors'); 
 
-app.use(cors({ origin: 'https://dzonny147.github.io' }));
+
 const app = express();
 const PORT = process.env.PORT || 10000;
+app.use(cors({ origin: 'https://dzonny147.github.io' }));
 
 app.use(bodyParser.json());
 
