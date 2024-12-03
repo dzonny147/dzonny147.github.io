@@ -9,9 +9,11 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer');
+const cors = require('cors'); 
 
+app.use(cors({ origin: 'https://dzonny147.github.io' }));
 const app = express();
-const PORT = 10000;
+const PORT = process.env.PORT || 10000;
 
 app.use(bodyParser.json());
 
