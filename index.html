@@ -19,7 +19,7 @@
             e.preventDefault();
             const inputText = document.getElementById('inputText').value;
             document.getElementById('result').innerHTML = "začítek hledání";
-            const response = await fetch('https://dzonny147-github-io.onrender.comnpm/api/search', {
+            const response = await fetch('https://dzonny147-github-io.onrender.com/api/search', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ inputText })
