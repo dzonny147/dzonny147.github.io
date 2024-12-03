@@ -33,7 +33,7 @@ app.post('/api/search', async (req, res) => {
 
     try {
         // starting browser for puppeteer
-        const browser = await puppeteer.launch({ headless: true });
+        const browser = await puppeteer.launch({ headless: true , cacheDirectory: '/opt/render/.cache/puppeteer',});
         const page = await browser.newPage();
         await page.goto(`https://www.google.com/search?q=${searchTerm}`);
 
