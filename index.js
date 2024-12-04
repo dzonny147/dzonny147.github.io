@@ -12,7 +12,7 @@ const puppeteer = require('puppeteer');
 const cors = require('cors'); 
 
 
-
+process.env.PUPPETEER_CACHE_DIR = '/opt/render/.cache/puppeteer';
 
 const app = express();
 const PORT = process.env.PORT || 10000;
