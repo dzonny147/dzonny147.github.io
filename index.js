@@ -12,8 +12,6 @@ const puppeteer = require('puppeteer');
 const cors = require('cors'); 
 
 
-process.env.PUPPETEER_CACHE_DIR = '/opt/render/.cache/puppeteer';
-
 const app = express();
 const PORT = process.env.PORT || 10000;
 app.use(cors({ origin: 'https://dzonny147.github.io' }));
@@ -35,7 +33,7 @@ app.post('/api/search', async (req, res) => {
 
     try {
         // starting browser for puppeteer
-        const browser = await puppeteer.launch({ headless: true , cacheDirectory: '/opt/render/.cache/puppeteer',});
+        const browser = await puppeteer.launch({ headless: true , cacheDirectory: 'cache/puppeteer',});
         const page = await browser.newPage();
         await page.goto(`https://www.google.com/search?q=${searchTerm}`);
 
